@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.5.0"
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+
+defaultTasks 'clean','test','aggregate'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '3.6.21'
+    junitVersion = '5.8.2'
+    assertJVersion = '3.22.0'
+    logbackVersion = '1.2.10'
+}
+
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+                "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}",
+                "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+                "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
+                "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+                "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+                "org.assertj:assertj-core:${assertJVersion}",
+                "ch.qos.logback:logback-classic:${logbackVersion}"
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+gradle.startParameter.continueOnFailure = true
+
+serenity {
+    reports = ["single-page-html"]
+
+    // // Specify the root package of any JUnit acceptance tests
+    //testRoot="starter"
+    testRoot="com.subocol.mastercrash"
+}
+
+test.finalizedBy(aggregate)
