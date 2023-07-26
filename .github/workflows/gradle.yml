@@ -23,10 +23,11 @@ jobs:
           java-version: '11'
       - name: Build with Gradle
         run: gradle clean test
+
       - name: Publicar informes de Serenity
         uses: actions/upload-artifact@v2
         with:
             name: serenity-reports
-            path: target/site/serenity
+            path: target/site/serenity/index.html
 
 
