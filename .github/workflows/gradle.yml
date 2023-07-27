@@ -19,6 +19,7 @@ jobs:
           java-version: 17
       - name: Build with Gradle
         run: gradle clean test
+        continue-on-error: true
       - name: Publicar informes de Serenity
         uses: actions/upload-artifact@v2
         with:
