@@ -6,14 +6,18 @@ buildscript {
     }
     dependencies {
         classpath "net.serenity-bdd:serenity-gradle-plugin:3.5.0"
+
     }
 }
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
-
 defaultTasks 'clean','test','aggregate'
+
+group = 'org.wesome'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -48,10 +52,41 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform{
+        includeTags  'mock'
+    }
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
+tasks.register("regresion", Test) {
+    testLogging {
+        events "started", "passed", "skipped", "failed"
+    }
+    useJUnitPlatform {
+        includeTags 'login1'
+    }
+    mustRunAfter check
+}
+tasks.register("login", Test) {
+    testLogging {
+        events "started", "passed", "skipped", "failed"
+    }
+    useJUnitPlatform {
+        includeTags 'login1'
+    }
+    mustRunAfter check
+}
+
+//test {
+//    String itags = project.hasProperty("includeTags") ?
+//            project.property("includeTags") : 'regression';
+//    String etags = project.hasProperty("excludeTags") ?
+//            project.property("excludeTags") : 'acceptance';
+//    useJUnitPlatform{
+//        includeTags  itags
+//        excludeTags  etags
+//    }
+//}
 
 gradle.startParameter.continueOnFailure = true
 
@@ -63,4 +98,3 @@ serenity {
     testRoot="com.subocol.mastercrash"
 }
 
-test.finalizedBy(aggregate)

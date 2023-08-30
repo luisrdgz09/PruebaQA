@@ -2,6 +2,10 @@ name: Gradle build
 
 on:
   workflow_dispatch:
+    inputs:
+      test-type:
+        description: 'Type of tests (regression/humo)'
+        required: true
 
 jobs:
   build:
@@ -15,7 +19,7 @@ jobs:
         with:
           java-version: 17
       - name: Build with Gradle
-        run: gradle clean test
+        run: gradle clean ${{ github.event.inputs.test-type }} aggregate
         continue-on-error: true
       - name: Publicar informes de Serenity
         uses: actions/upload-artifact@v2

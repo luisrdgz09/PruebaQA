@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     @DisplayName("Login with valid user")
-    @Tag("mock")
+    @Tag("regression")
     void loginWithValidCredentials() {
 
         actor.attemptsTo(
@@ -39,7 +39,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     @DisplayName("Login with invalid password")
-    @Tag("mock")
+    @Tag("login")
     void loginWithInvalidPassword() {
 
         actor.attemptsTo(
@@ -55,7 +55,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     @DisplayName("Login with unauthorized user")
-    @Tag("mock")
+    @Tag("login")
     void loginWithUnauthorizedUser() {
 
         actor.attemptsTo(
@@ -71,6 +71,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with Required User")
     @Tag("mock")
+    @Tag("login")
     void loginWithRequiredUser() {
 
         actor.attemptsTo(
@@ -87,6 +88,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with Required Password")
     @Tag("mock")
+    @Tag("login")
     void loginWithRequiredPassword() {
 
         actor.attemptsTo(
@@ -103,6 +105,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with inactive rol")
     @Tag("mock")
+    @Tag("login")
     void loginWithInactiveRol() {
 
         actor.attemptsTo(
@@ -119,6 +122,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with invalid login captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithInvalidLoginCaptcha() {
 
         actor.attemptsTo(
@@ -135,6 +139,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with failed connection to db")
     @Tag("mock")
+    @Tag("login")
     void loginWithFailedConnectionToDB() {
 
         actor.attemptsTo(
@@ -151,6 +156,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with empty db")
     @Tag("mock")
+    @Tag("login")
     void loginWithEmptyDB() {
 
         actor.attemptsTo(
@@ -167,6 +173,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with valid captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithValidCaptcha() {
 
         actor.attemptsTo(
@@ -182,6 +189,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with invalid response captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithInvalidResponseCaptcha() {
 
         actor.attemptsTo(
@@ -198,6 +206,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with invalid secret captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithInvalidSecretCaptcha() {
 
         actor.attemptsTo(
@@ -214,6 +223,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with missing input response captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithMissingInputResponseCaptcha() {
 
         actor.attemptsTo(
@@ -230,6 +240,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with missing input secret captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithMissingInputSecretCaptcha() {
 
         actor.attemptsTo(
@@ -245,6 +256,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with robot captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithRobotCaptcha() {
 
         actor.attemptsTo(
@@ -261,6 +273,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with timed out or duplicate token captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithDuplicateCaptcha() {
 
         actor.attemptsTo(
@@ -278,6 +291,7 @@ public class LoginTest extends BaseTest {
     @Test
     @DisplayName("Login with bad request captcha")
     @Tag("mock")
+    @Tag("login")
     void loginWithBadRequestCaptcha() {
 
         actor.attemptsTo(

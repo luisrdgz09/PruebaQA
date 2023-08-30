@@ -34,7 +34,7 @@ public class GetUsers extends BaseTest {
     * */
     @Test
     @DisplayName("Get all the users registered from displayed name")
-    @Tag("users")
+    @Tag("regression")
     @TestsRequirement("Given I want to buy" +
             "When I buy " +
             "Then I should ....")
@@ -62,7 +62,7 @@ public class GetUsers extends BaseTest {
 
     @Test
     @DisplayName("Get a single user")
-    @Tag("users 2")
+    @Tag("humo")
     void getASingleUser() {
         int userId = 2;
 
