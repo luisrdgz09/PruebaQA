@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       test-type:
-        description: 'Type of tests (regression/humo)'
+        description: 'Type of tests (regresion/humo)'
         required: true
 
 jobs:

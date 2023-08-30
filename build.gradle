@@ -15,9 +15,6 @@ apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 defaultTasks 'clean','test','aggregate'
 
-group = 'org.wesome'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()

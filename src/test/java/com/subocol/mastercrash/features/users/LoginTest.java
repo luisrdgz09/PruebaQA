@@ -39,7 +39,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     @DisplayName("Login with invalid password")
-    @Tag("login")
+    @Tag("login1")
     void loginWithInvalidPassword() {
 
         actor.attemptsTo(
