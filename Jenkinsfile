@@ -14,19 +14,9 @@ pipeline {
     }
     stage('Publish Report') {
       steps {
-        publishReport()
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/serenity', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
       }
     }
   }
 }
 
-def publishReport() {
-  publishHTML(target: [
-    reportName: 'Mastercrash E2E API Test Results',
-    reportDir: 'target/site/serenity',
-    reportFiles: 'index.html',
-    keepAll: true,
-    alwaysLinkToLastBuild: true,
-    allowMissing: false
-  ])
-}
