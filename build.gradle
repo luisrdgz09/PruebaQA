@@ -48,42 +48,42 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
-test {
-    useJUnitPlatform{
-        includeTags  'mock'
-    }
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-}
-tasks.register("regresion", Test) {
-    testLogging {
-        events "started", "passed", "skipped", "failed"
-    }
-    useJUnitPlatform {
-        includeTags 'login1'
-    }
-    mustRunAfter check
-}
-tasks.register("login", Test) {
-    testLogging {
-        events "started", "passed", "skipped", "failed"
-    }
-    useJUnitPlatform {
-        includeTags 'login1'
-    }
-    mustRunAfter check
-}
-
 //test {
-//    String itags = project.hasProperty("includeTags") ?
-//            project.property("includeTags") : 'regression';
-//    String etags = project.hasProperty("excludeTags") ?
-//            project.property("excludeTags") : 'acceptance';
 //    useJUnitPlatform{
-//        includeTags  itags
-//        excludeTags  etags
+//        includeTags  'mock'
 //    }
+//    testLogging.showStandardStreams = true
+//    systemProperties System.getProperties()
 //}
+//tasks.register("regresion", Test) {
+//    testLogging {
+//        events "started", "passed", "skipped", "failed"
+//    }
+//    useJUnitPlatform {
+//        includeTags 'login1'
+//    }
+//    mustRunAfter check
+//}
+//tasks.register("login", Test) {
+//    testLogging {
+//        events "started", "passed", "skipped", "failed"
+//    }
+//    useJUnitPlatform {
+//        includeTags 'login1'
+//    }
+//    mustRunAfter check
+//}
+
+test {
+    String itags = project.hasProperty("includeTags") ?
+            project.property("includeTags") : 'regression';
+    String etags = project.hasProperty("excludeTags") ?
+            project.property("excludeTags") : 'acceptance';
+    useJUnitPlatform{
+        includeTags  itags
+        excludeTags  etags
+    }
+}
 
 gradle.startParameter.continueOnFailure = true
 
