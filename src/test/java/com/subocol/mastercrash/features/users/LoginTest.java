@@ -26,6 +26,7 @@ public class LoginTest extends BaseTest {
     @Tag("regression")
     void loginWithValidCredentials() {
 
+
         actor.attemptsTo(
                 Login
                         .with(LoginFactory.withValidUser())
@@ -34,7 +35,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(HttpStatus.SC_OK, SerenityRest.lastResponse().statusCode());
         //Ensure.that(SerenityRest.lastResponse().statusCode())
         //        .isEqualTo(HttpStatus.SC_OK);
-
     }
 
     @Test
