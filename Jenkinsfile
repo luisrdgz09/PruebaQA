@@ -1,9 +1,6 @@
 pipeline {
   agent any
 
-   environment {
-          env = "${env}"
-      }
 
   stages {
     stage('Running tests') {
