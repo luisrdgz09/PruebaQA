@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 17
       - name: Build with Gradle
-        run: gradle clean test -PincludeTags="${github.event.inputs.test-type}" aggregate
+        run: gradle clean test -PincludeTags="${{github.event.inputs.test-type}}" aggregate
         continue-on-error: true
       - name: Publicar informes de Serenity
         uses: actions/upload-artifact@v2
