@@ -6,6 +6,9 @@ on:
       test-type:
         description: 'Type of tests (regresion/humo)'
         required: true
+  push:
+    branches:
+      - develop
 
 jobs:
   build:
@@ -19,7 +22,7 @@ jobs:
         with:
           java-version: 17
       - name: Build with Gradle
-        run: gradlel clean test -PincludeTags="${github.event.inputs.test-type}" aggregate
+        run: gradle clean test -PincludeTags="${github.event.inputs.test-type}" aggregate
         continue-on-error: true
       - name: Publicar informes de Serenity
         uses: actions/upload-artifact@v2
